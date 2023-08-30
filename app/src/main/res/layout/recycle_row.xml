@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="8"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/fontttt"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="8dp"
+                    android:singleLine="true"
+                    android:text="Aksdfasfsafaasfsafasf"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:text="Akssadasas"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="4dp"
+
+                    />
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:text="Akssadasdas"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/pin"
+                    android:layout_width="22dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="0dp"
+                    android:src="@drawable/baseline_push_pin_244" />
+
+                <ImageView
+                    android:id="@+id/lock"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/baseline_lock_24"
+                    android:layout_marginTop="0dp" />
+
+                <ImageView
+                    android:id="@+id/alarm"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/baseline_alarm_add_24"
+                    android:layout_marginTop="8dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

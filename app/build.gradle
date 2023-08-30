@@ -1,0 +1,93 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+
+    id("androidx.navigation.safeargs.kotlin")
+
+    id 'kotlin-kapt'
+
+}
+
+android {
+
+    namespace 'com.denobaba.mynotes'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.denobaba.mynotes"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //signingConfig signingConfigs.debug
+    }
+
+    dataBinding{
+        enabled= true
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_9
+        targetCompatibility JavaVersion.VERSION_1_9
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+}
+def nav_version = "2.7.1"
+
+def lottieVersion = "6.0.1"
+
+def rxJavaVersion = '2.1.1'
+def roomVersion = '2.5.2'
+def preferencesVersion = '1.2.1'
+def lifeCycleExtensionVersion = '1.1.1'
+
+dependencies {
+
+    implementation "android.arch.lifecycle:extensions:$lifeCycleExtensionVersion"
+
+
+
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
+
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
+
+    implementation "androidx.preference:preference:$preferencesVersion"
+
+
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+
+
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

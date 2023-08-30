@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/AddAlarm"
+        android:title="Add Alarm"
+        android:icon="@drawable/baseline_alarm_add_24"
+        />
+
+    <item android:id="@+id/DeleteAlarm"
+        android:title="Delete Alarm"
+        android:icon="@drawable/baseline_alarm_off_24"
+        />
+
+    <item android:id="@+id/lock"
+        android:icon="@drawable/baseline_lock_24"
+        android:title="Lock"
+        />
+
+    <item android:id="@+id/Share"
+        android:title="Share"
+        android:icon="@drawable/baseline_share_24"
+        />
+
+    <item
+        android:id="@+id/unlock"
+        android:orderInCategory="100"
+        android:title="Unlock"
+        app:showAsAction="never"
+        android:icon="@drawable/baseline_no_encryption_gmailerrorred_24"
+        />
+</menu>
