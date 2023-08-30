@@ -7,6 +7,7 @@ delete with beautifull deleting animation. If you want pin your note long click 
 
 
 # :pencil2: Used Technologies
+- MVVM architecture
 - Room Database
 - Rx Java
 - Coroutines
