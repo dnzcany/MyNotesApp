@@ -34,7 +34,9 @@
         tools:layout="@layout/fragment_notes" >
         <action
             android:id="@+id/action_notes_to_mainScreen"
-            app:destination="@id/mainScreen" />
+            app:destination="@id/mainScreen"
+            app:popUpTo="@id/notes"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="notesUuid"
             app:argType="integer"

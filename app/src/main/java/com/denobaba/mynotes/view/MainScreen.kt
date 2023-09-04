@@ -34,7 +34,7 @@ class MainScreen : Fragment() {
     private val viewModel: NotesViewModel by viewModels()
     private lateinit var notesAdapter: NotesAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentMainScreenBinding.inflate(inflater, container, false)
         return binding.root
     }

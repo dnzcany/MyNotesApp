@@ -10,8 +10,7 @@
 
 
     <application
-
-
+        android:resizeableActivity="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -26,9 +25,10 @@
 
 
         <activity
-            android:name=".view.MainActivity"
+            android:name="com.denobaba.mynotes.view.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

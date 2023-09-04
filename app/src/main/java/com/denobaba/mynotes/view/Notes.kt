@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.denobaba.mynotes.R
@@ -31,7 +32,9 @@ import com.denobaba.mynotes.databinding.FragmentNotesBinding
 import com.denobaba.mynotes.model.NotesModel
 import com.denobaba.mynotes.util.NotificationReceiver
 import com.denobaba.mynotes.viewmodel.NotesViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -77,6 +80,8 @@ class Notes : Fragment() {
         var originalTitle: String? = null
         var originalContent: String? = null
 
+
+
         // Get the note ID from arguments
         noteId = args.notesUuid
 
@@ -120,18 +125,23 @@ class Notes : Fragment() {
                 val title = binding.titlehere.text.toString()
                 val noteText = binding.noteshere.text.toString()
 
+                var noteChanged = false
+
+                if (title != originalTitle || noteText != originalContent) {
+                    noteChanged = true
+                }
+
                 if (title.isBlank() && noteText.isBlank()) {
                     Toast.makeText(context, "Notes empty", Toast.LENGTH_SHORT).show()
-                    val action = NotesDirections.actionNotesToMainScreen()
-                    Navigation.findNavController(view).navigate(action)
                 } else {
-                    val Enote = viewModel.get(noteId!!)
-                    val formattedDate = if (title != originalTitle || noteText != originalContent) {
+                    val Enote = withContext(Dispatchers.IO) { viewModel.get(noteId!!) }
+
+                    val formattedDate = if (noteChanged) {
                         val nowdate = LocalDateTime.now()
                         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                         nowdate.format(formatter)
                     } else {
-                        Enote.date
+                        Enote?.date
                     }
 
                     var password: String? = null
@@ -148,21 +158,29 @@ class Notes : Fragment() {
                         uuid = if (noteId != null && noteId != -1) noteId else null,
                         password = password,
                         locked = locked,
-                        alarmStatus = isAlarmSet // Preserve the alarm status from the initial value
+                        alarmStatus = isAlarmSet
                     )
 
                     if (noteId != null && noteId != -1) {
-                        viewModel.updateNote(note)
+                        withContext(Dispatchers.IO) { viewModel.updateNote(note) }
+                        if (noteChanged) {
+                            Toast.makeText(context, "Note saved", Toast.LENGTH_SHORT).show()
+                        }
                     } else {
-                        viewModel.insertNote(note)
+                        withContext(Dispatchers.IO) { viewModel.insertNote(note) }
+                        Toast.makeText(context, "Note saved", Toast.LENGTH_SHORT).show()
                     }
-
-                    Toast.makeText(context, "Note saved", Toast.LENGTH_SHORT).show()
-                    val action = NotesDirections.actionNotesToMainScreen()
-                    Navigation.findNavController(view).navigate(action)
                 }
+
+                val navOptions = NavOptions.Builder()
+                    .setPopUpTo(R.id.notes, true)
+                    .build()
+
+                val action = NotesDirections.actionNotesToMainScreen()
+                Navigation.findNavController(view).navigate(action, navOptions)
             }
         }
+
 
 
 
