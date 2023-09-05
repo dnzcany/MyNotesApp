@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         style="@style/ToolbarStyle"
         android:layout_width="400dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="0dp"
 
         android:layout_height="56dp"
         android:background="#30A2FF"
